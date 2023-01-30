@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>console.log vs console.dir</title>
+</head>
+
+<body>
+    <h2>Diffrence between "console.log" and "console.dir".</h2>
+    <ol>
+        <li>console.dir method is used mainly to display properties of an object. It outputs the list of properties of
+            an
+            object
+            in a readable and interactive manner.</li><br>
+        <li>'dir' in the console.dir stands for the directory which represents the listing of elements or objects
+            properties.</li><br>
+
+        <li>Use console.log to display the output of anything in the console including strings, numbers, objects, etc.
+            Use
+            console.dir if you want to display the properties of an object in a hierarchical manner in JSON like format.
+        </li>
+    </ol>
+    <script>
+        const arr = [1, 2, 3, 4, 5];
+        console.log(arr);
+        console.dir(arr);
+        console.log(document.head);
+        console.dir(document.head);
+    </script>
+</body>
+
+</html>

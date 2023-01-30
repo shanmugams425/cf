@@ -40,5 +40,23 @@ const person = {
 };
 
 const me = Object.create(person);
-let k = me.printIntro;
-console.log(k);
+person = console.log(me);
+
+//  console.error
+
+let element = null;
+if (element == null) {
+  console.error("There is an error. Element doesn't exist.");
+} else {
+  console.log("this will never be output");
+}
+
+//console.error
+//To log out your own error message you can check if the element exists or not. Use console.error and pass an error message if the element doesn't exist.
+
+let a = [1, 2, 3, 4, 5];
+a.map((b) => {
+  if (b.length < 3) {
+    console.log(b);
+  } else console.error(b);
+});
