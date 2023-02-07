@@ -14,20 +14,23 @@ console.log(typeof(obj3))
 console.log(`name is ${obj3.name} and his age is ${obj3.age}`)
 console.log(obj3)
 console.log(Object.keys(obj3));
-var allKeys=Object.keys(obj3);
+
+
+var allKeys=Object.keys(obj3); // ["name", "age"]
 for(var t of allKeys)
-    console.log(t)//value printed
+    console.log("dd",t)//value printed  
 for(var t in allKeys)
-    console.log(t)//index printed
+    console.log("ddee", t)//index printed  
 
 var vals=Object.values(obj3);    
 for(let v of vals)
     console.log(v)
 
+
 for(let v in vals)
     console.log(v)
 
-obj3.city='chn'
+obj1 = obj3.city='chn'
 console.log(obj3)
 console.log(obj1)  
 
