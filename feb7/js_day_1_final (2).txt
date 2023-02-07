@@ -784,7 +784,7 @@ c1.fuelCapacity
 48
 
 
-ince objects inherit from the prototype object, then all new objects will have 
+since objects inherit from the prototype object, then all new objects will have 
 changed property value if a prototype value is changed. 
 All the previously created objects will have the previous value.
 
