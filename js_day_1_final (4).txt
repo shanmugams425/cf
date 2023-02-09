@@ -1,0 +1,1138 @@
+JS:
+===
+
+Programming paradigm:
+======================
+	imperative 
+		step by step process 
+		how?
+
+	1. oops
+
+	declarative
+		what?
+
+		ex: atm, mobile, html (<h1>)
+			
+		1. functional programming:
+				filter(),sort(),map()
+
+JS				
+		what is js
+			1. it is client side scripting
+			2.	it can also run on server side (with support of NodeJS)
+			3. OOPS+functional programming
+
+		why js
+			1. manipulate dom , 
+			2. dynamic functionality of an app
+====================================================================================
+TASK:  OOPS+functional programming - find the features of both
+abstyraction
+encaps
+
+
+immutable obj
+recursive 
+arr=[1,2,3,4]
+var a=arr.filter(x->x%2)
+
+function det(g){
+	return 3;
+}
+
+det(arr.filter(x->x%2))
+
+These operations typically include being passed as an argument, returned from a 
+function, and assigned to a variable.
+
+
+adv and disadv - js
+====================================================================================
+history:
+
+
+	livescript - JavaScript
+
+	differnt types of js - vannilascript,coffeescript
+
+	Ecma International - standard version of js
+
+	ES1,2,3,5
+	ES5 -  stable version
+	
+	ES6....ES2015
+
+	
+intro:
+======
+https://en.wikipedia.org/wiki/ECMAScript_version_history
+
+data type:
+==========
+
+	primitive - 7 dt -> number,string,boolean,bigint,null,undefined,SYMBOL(es6)
+	non-primitive - Object
+
+variable: 
+
+	var x;
+
+application : to add 2 numbers
+
+	var n1, n2, sum;
+		sum=n1+n2
+		console.log(sum)
+
+int n --- var n;
+
+var t=90;
+t='hi';
+t=true;
+
+in java
+	int a=90;
+	a="hi";//strongly typed
+
+weakly typed:
+
+	var a=9	// implicit type conversion
+	var sum=a+"5"
+	console.log(sum)
+
+
+let , var &  const
+
+
+var e=90
+undefined
+console.log(typeof(e)
+VM264:1 Uncaught SyntaxError: missing ) after argument list
+console.log(typeof(e))
+
+VM272:1 number
+undefined
+e="hi"
+'hi'
+console.log(typeof(e))
+
+VM298:1 string
+
+
+var a=90;
+a
+90
+var a=78
+undefined
+a
+78
+var a=90;  var a=87;
+undefined
+a
+87
+let s='hi'
+undefined
+s
+'hi'
+let s=90
+undefined
+let s=90
+undefined
+let s=90; var s=77;
+
+
+1.
+console.log(u)
+VM956:1 Uncaught ReferenceError: u is not defined
+    at <anonymous>:1:13
+
+2. 
+
+//var u; //variable hoisting - js engine
+u=90; 
+console.log(u)
+ 90
+
+3.
+ //var j; //auto var hoisting
+	console.log(j)
+	var j=90;
+	//undefined
+
+var x,y; //auto var hoisting
+
+console.log(x)
+console.log(y)
+var x=90
+var y=45
+x()
+console.log(x) //90
+console.log(y) //45
+
+
+
+
+
+function disp(){
+	var s=90;
+	console.log(s);
+}
+disp();
+
+var a=90;
+function disp(){
+	a=900;
+	console.log("before ",a)
+	var a=89;
+	console.log("after",a)
+}
+
+disp()
+
+var a=90;
+function disp(){
+	a=900;
+	console.log("before ",a)
+	var a=89;
+	console.log("after",a)
+}
+console.log("before function call",a)
+disp(); console.log("after function call ",a);
+
+
+var a=90;
+function disp(){
+	this.a=900;
+	console.log("before ",a)
+	var a=89;
+	console.log("after",a)
+}
+console.log("before function call",a)
+disp(); console.log("after function call ",a);
+VM376:8 before function call 90
+VM376:4 before  undefined
+VM376:6 after 89
+VM376:9 after function call  900
+
+
+why block scoped variables:
+
+problem:
+===========
+	function disp(){
+			var a=900;
+			console.log("before ",a);
+
+			{
+				var a=56;
+				console.log("inner ",a);
+			}
+			console.log("after ",a);
+	}
+disp()
+
+solution:
+
+function disp(){
+			var a=900;
+			console.log("before ",a);
+
+			{
+				let a=56;
+				console.log("inner ",a);
+			}
+			console.log("after ",a);
+	}
+disp()
+VM400:3 before  900
+VM400:7 inner  56
+VM400:9 after  900
+
+let :
+=====
+block scoped varible
+
+cannot redeclaration same var name
+
+
+let n=90;
+var n=910; or let n=94;
+
+
+const: same as let, its value cannot be changed anywhere in the code
+only thing is we can redeclare them again- check it in embedded js in html
+
+
+const n=5678
+undefined
+const n=90
+undefined
+n=9000;
+VM547:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:2
+(anonymous) @ VM547:1
+n++
+VM558:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:2
+
+
+conversions in js
+
+Type conversion (or typecasting) means transfer of data from one data type to another. Implicit conversion happens when the compiler (for compiled languages) or runtime (for script languages like JavaScript) automatically converts data types. The source code can also explicitly require a conversion to take place.
+
+For example, given the expression "foo" + 1, the Number 1 is implicitly converted into a String and the expression returns "foo1".
+
+
+NUMBER:
+===========
+123; // one-hundred twenty-three
+123.0; // same
+123 === 123.0; // true
+123==123.0
+true
+123 === 123.0;
+true
+123=='123'
+true
+typeof(123)
+'number'
+typeof('123')
+'string'
+123==='123'
+false
+
+
+explicit conversions
+
+Number("123"); // returns the number 123
+Number("123") === 123; // true
+
+Number("unicorn"); // NaN
+Number(undefined); // NaN
+
+Task:
+
+Number.MAX_VALUE
+ Number.MIN_SAFE_INTEGER and Number.MAX_SAFE_INTEGER
+Number coercion
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+execution context?
+===================================================================================
+console.log(null==undefined)// f
+console.log(null===undefined)//f
+
+console.log(null=='undefined')//f
+console.log(null==='undefined')//f
+
+console.log('null'=='undefined')//t
+console.log('null'==='undefined')//t,f
+
+template literals
+------------------
+
+name='ajay'
+age=21
+city='Chennai'
+branch='TNagar'
+
+console.log('hi hello '+name);
+console.log('hi hello ',name);
+
+console.log('hi hello '+name+', he is from '+city+', from branch '+branch+', his age is '+age);
+
+
+in es6: temp lit
+
+${} inside normal string values
+
+console.log(`hi hello ${name} he is from ${city} from branch ${branch} his age is ${age}`);
+
+
+array:
+======
+	collection of hetrogenous values
+
+	var arr=[1,2,3,4,6]
+	arr.length	
+	arr[0]
+	arr[3]
+	arr[5] //undefined
+
+arr[1]=9000
+arr
+
+task: empty an array by using splice() 
+
+
+destructuring array:
+
+	
+
+
+es5:
+var num=[1,2,4,5,7,8,9,45]
+let a=num[0]
+let b=num[1]
+let c=num[2]
+
+in es6 -> destructuring
+
+var num=[1,2,4,5,7,8,9,45]
+
+let [a,b,c]=num
+
+a
+b
+c
+
+let [a,,,,b,,,c]=num
+
+let [g*num.length-2,,h*num.length-1,,j*num.length]=num
+
+//Uncaught SyntaxError: Invalid destructuring assignment target
+
+
+functions:
+
+	functions
+	anonymous fns
+	arrow fns
+	
+	self executing fns
+	
+functions:
+
+	function func_name()
+	{
+		//stmt
+		//return if needed
+ 	}
+func_name();
+
+function display(){
+	console.log('hi');
+}
+display()
+
+function display(){
+	return 'hi';
+}
+
+var res=display()
+res
+
+
+function add(a,b){
+	console.log(a,b);
+}
+
+add(1,2);
+
+add(1);
+add();
+
+as per requirement => default values of any variable shud be 1
+
+a=1,b=1
+
+function add(a=1,b=1){
+	console.log(a,b);
+}
+
+add();
+
+
+
+function add(a=1,b=1){
+	
+	console.log(a,b);
+	return (a+b)
+}
+
+add();
+
+
+anonymous fn:
+=================	
+a fn without a name
+
+var display=function (){
+	console.log('hi');
+}
+display
+
+//var display1;
+display1()
+var display1=function (){
+	console.log('hi');
+}
+display1();
+
+14:55 03-02-2023
+==================
+day 2 
+========
+
+function f4(x=0,y=0){
+	x=x*2;
+	y=y-6;
+	z=x+y;
+	
+}
+
+
+let f4=(x=0,y=0)=>x+y;//no retun keyword
+
+f4(2,3)
+
+
+function f5(x=0,y=0){
+	x=x*2;
+	y=y-6;
+	var z=x+y;
+	return z;
+}
+
+
+let f6=(x=0,y=0)=>{
+	x=x*2;
+	y=y-6;
+	var z=x+y;
+	return z;
+}
+=======================================================================================
+task:
+-----
+find usage of "use strict"
+=======================================================================================
+
+arrays:
+	
+	arr=[1001,2,3,4,56,256]
+
+	let[a,,b,c]=arr
+	console.log(a,b,c)
+	
+
+	let[a,,b,c,...r]=arr
+	
+Rest optr: ...varname 
+				it acts like an array
+				it shud be or it can be last arg of where it is used
+
+	let[a,,b,c,...r]=arr
+undefined
+a
+1001
+b
+3
+c
+4
+r
+(2) [56, 256]
+r[0]
+56
+r[1]
+256
+
+
+
+
+arr=[2,5,8,0,3]
+
+function display(t){
+	console.log(t)
+}
+display(arr);
+
+
+arr=[2,5,8,0,3]
+
+function display(t){
+	console.log(t)
+}
+display(arr);
+VM307:4 (5) [2, 5, 8, 0, 3]
+undefined
+function display(t){
+	console.log(t)
+}
+display(1,2,3,4,5);
+VM373:2 1
+undefined
+function display(t,u,v,...r){
+	console.log(t,u,v,r)
+}
+display(1,2,3,4,5);
+VM457:2 1 2 3 (2) [4, 5]
+
+
+	
+Spread optr:
+
+	arr=[2,3,5,7,6]
+
+	function disp(t,u,...r){
+		console.log(t);
+	}
+	disp(...arr);
+Objects:
+
+	physcial entity
+	attributes, behaviours/actions(methods), identity
+
+feathers, legs, beak, flyStatus -  attributes - make/defines an object
+
+fly() -
+
+js book
+
+	author
+	publication
+	pdate
+	no.of.pages
+	price
+	toc
+	qty: 0
+	availbleStatus: false
+		
+purchase() - 10
+	
+	checkAvailability()
+	updateQty();
+
+class :
+
+	logical entity
+	collection of common behaviours and attributes of similiar objects
+	blueprint / template
+	collection of objects
+
+ex:
+	Student,	Car, Employee,	Food,	Vehicle,	Bird
+	
+Car : ferari,bmw,maruti
+Bird: dove,parrot,peacock,crow,cockteil
+
+===================================================================================
+task: defineProperties, Object.entries(),Object.freeze()
+
+
+inheritance using:
+
+prototype
+__proto__
+
+===================================================================================
+14:11 06-02-2023 - day 3
+=========================
+	
+Object - cosmic parent
+
+
+var ob={} or 
+var ob1=new Object();
+
+
+var objName={(k,v),(k1:v1)}
+
+(k,v)- property1
+(k1,v1)- property2
+
+var car={
+(name:'ford')
+(price:345677)
+}
+//class name is still Object
+
+
+Object.keys() - access to all keys
+ 
+Object.entries() - has access to all k-v pairs
+
+Object.freeze() - to make an object immutable
+
+new properties cannot be added, existing properties cannot be removed
+
+
+
+difference between freeze() and const
+
+const a={}
+const a={id:90} possible
+
+here id is not constant only  object a is constant
+
+to make id or other properties to be const , we use freeze()
+
+console.log(Object.isFrozen(a));
+
+console.log(Object.isFrozen(obj4));
+
+
+add methods into objects:
+============================
+case 1:
+=========
+var obj={
+		id:234,
+		changeId:function(){ id=9000; console.log('changed '+id)}
+}
+obj.changeId()
+console.log(obj.id);
+
+case 2:
+=========
+
+When the object's members are functions there's a simpler syntax. Instead of bio: function () we can write bio(). Like this:
+
+const person = {
+  name: ["Bob", "Smith"],
+  age: 32,
+  bio() {
+    console.log(`${this.name[0]} ${this.name[1]} is ${this.age} years old.`);
+  },
+  introduceSelf() {
+    console.log(`Hi! I'm ${this.name[0]}.`);
+  },
+};
+
+var obj={
+		id:234,
+		changeId:function(){ this.id=9000; console.log('changed '+this.id) delete this.id}
+}
+obj.changeId()
+VM152:3 changed 9000
+undefined
+console.log(obj.id);
+VM158:1 9000
+
+
+object.Create():
+var emp={}
+
+var copyEmp=Object.create(emp);
+console.log(emp)
+console.log(copyEmp)
+
+
+
+class and constructor function
+
+
+
+
+var emp={
+	name:'ajay'
+	dispName(){
+			console.log(name);
+	}
+}
+
+console.log(emp.name);
+emp.dispName()
+
+Object prototypes:
+====================
+Every object in JavaScript has a built-in property, which is called its prototype.
+
+
+function Vehicle(){
+}
+
+
+When an object gets a request for a property that it does not have, its 
+prototype will be searched for the property, then the prototype’s prototype,
+ and so on. So who is the prototype of an object? It is the great ancestral 
+prototype, the entity behind almost all objects, Object.prototype. 
+Many objects don’t directly have Object.prototype as their prototype, but 
+instead have another object that provides a different set of default properties. 
+Functions derive from Function.prototype, and arrays derive from Array.prototype and so on.
+
+
+function Car(name){
+    this.name=name;
+}
+undefined
+var c1=new Car('Tata');
+undefined
+c1
+Car {name: 'Tata'}
+c1.price=240000
+240000
+c1
+Car {name: 'Tata', price: 240000}
+var c1=new Car('BMW');
+undefined
+c1
+Car {name: 'BMW'}
+var c2=new Car('Tata');
+undefined
+c2.price=340000
+340000
+c2
+Car {name: 'Tata', price: 340000}
+c1
+Car {name: 'BMW'}
+Car.prototype.fuelCapacity=48
+48
+c1
+Car {name: 'BMW'}name: "BMW"[[Prototype]]: ObjectfuelCapacity: 48constructor: ƒ Car(name)[[Prototype]]: Object
+c1.fuelCapacity
+48
+
+
+Since objects inherit from the prototype object, then all new objects will have 
+changed property value if a prototype value is changed. 
+All the previously created objects will have the previous value.
+
+
+
+
+function Demo(name,resource){
+	this.name=name,
+	this.resource=resource
+}
+
+var d1=new Demo('PFM',3);
+Demo.prototype.pm='H'
+console.log(d1)
+var d2=new Demo('Bandhan',2);
+console.log(d2)
+
+//Demo.prototype.pm='Hem'
+Demo.prototype={pm:'Hem'}
+var d3=new Demo('Hdfc',6);
+console.log(d3)
+call():
+-------
+problem:
+============
+const obj = {
+  animal: "cats",
+  sleepDuration: "12 and 16 hours",
+};
+obj.prototype. greet=function() {
+  console.log(this.animal, "typically sleep between", this.sleepDuration);
+}//not possible
+
+obj.greet=function() {
+  console.log(this.animal, "typically sleep between", this.sleepDuration);
+}
+
+var oo={}
+oo //doesnt have greet()
+greet.call(oo)
+
+solution:
+===========
+function greet() {
+  console.log(this.animal, "typically sleep between", this.sleepDuration);
+}
+
+const obj = {
+  animal: "cats",
+  sleepDuration: "12 and 16 hours",
+};
+
+greet.call(obj)
+
+
+ex2:
+====
+globalThis.globProp = "Wisen";
+
+function display() {
+  console.log(`globProp value is ${this.globProp}`);
+}
+
+display.call();
+
+
+display() {
+  console.log(`a value is ${a} globProp value is ${this.globProp}`);
+}
+
+display.call();
+
+globProp = "Wisen";
+a=90;
+function display() {
+  console.log(`a value is ${a} globProp value is ${this.globProp}`);
+}
+
+display.call(globprop);
+display.call(this.globprop);
+
+globalThis.globProp = "Wisen";
+
+function display() {
+  console.log(`globProp value is ${this.globProp}`);
+}
+
+display.call(); 
+console.log(this.globalThis);//wind
+console.log(globalThis);//wind
+
+bind():
+----------
+const module = {
+  x: 42,
+  getX: function() {
+    return this.x;
+  }
+};
+x=900;
+const unboundGetX = module.getX;
+console.log(unboundGetX()); // The function gets invoked at the global scope
+// Expected output: undefined
+
+const boundGetX = unboundGetX.bind(module);
+console.log(boundGetX());
+// Expected output: 42
+
+
+
+Classes in ES6
+----------------
+
+	class - key word
+
+two wordds in class name-  both words first char shud be in upper case
+
+
+name= var	
+getEmployeeName - var,meth
+EmployeeDetail - class
+DATEOFMONTH- enum or const
+
+sytax:
+
+class ClassName{
+	//properties - cannot be created like this
+	//constructor fns
+	//methods
+}
+
+class Employee{
+	var name='ajay';
+	function display(){
+		console.log(this.name);
+	}
+}
+
+
+
+class Employee{}
+undefined
+var emp=new Employee();
+undefined
+emp
+Employee {}[[Prototype]]: Object
+class Employee{
+    constructor(){
+        console.log('obj created-emp');
+    }
+}
+undefined
+var emp=new Employee();
+VM503:3 obj created-emp
+undefined
+var emp1={}
+undefined
+class Employee{
+    var name='ajay'
+VM661:2 Uncaught SyntaxError: Unexpected identifier 'name'
+class Employee{
+    constructor(name,age){
+        this.name=name;
+        this.age=age;
+    }
+}
+undefined
+var emp=new Employee('ajay',12);
+undefined
+var emp1=new Employee('vinay',22);
+undefined
+emp
+
+Employee {name: 'ajay', age: 12}age: 12name: "ajay"[[Prototype]]: Objectconstructor: class Employee[[Prototype]]: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: (...)get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()
+emp1
+Employee {name: 'vinay', age: 22}age: 22name: "vinay"[[Prototype]]: Objectconstructor: class Employee[[Prototype]]: Object
+emp.name
+'ajay'
+emp1.name
+'vinay'
+
+A class may only have one constructor
+=======================================
+class Trainee{
+    constructor(){
+        console.log('no arg');
+    }
+    constructor(name){
+        console.log('name arg');
+    }
+}
+VM1230:5 Uncaught SyntaxError: A class may only have one constructor
+
+
+===================================================
+task: Function.prototype.apply()
+task: slide 52 , subclass.html
+task: method chaining and encapsulation
+===================================================
+***10:43 08-02-2023***
+=======================
+
+Functions - refresher
+
+function fnName(arg)
+{
+	//statements
+	//return //optional
+}
+
+when return is needed in function:
+			|**caller**|
+	res=areaOFSomething(10)-areaOfCircle(10)-areaOfSome(10,3);
+	console.log(res);//this is expected one
+
+	function areaOFSomething(r){
+		var r1=pi*r*r*r;
+		//console.log(pi*r*r*r);//not rgt place and this is not expected o/p
+		//instead return it back to caller
+		return  r1;
+		
+	}
+
+	function areaOfCircle(r){
+		return pi*r*r;
+		}
+
+	areaOfSome(r,h){
+		return pi*r*r*h;
+	}
+	
+=====================================================================================
+task 1 : make only one function and do the above operation
+=====================================================================================
+hoisting
+
+//JavaScript interpreter hoists the entire function declaration 
+//to the top of the current scope,
+
+====================================================================================
+IMP NOTE:
+----------
+Function hoisting only works with function declarations — not with function 
+expressions.
+====================================================================================
+
+scope:
+Variables defined inside a function cannot be accessed from anywhere 
+outside the function, 
+because the variable is defined only in the scope of the function.
+
+Arguments in function:
+
+its a special object created and is used to store the arguments passed from function call
+its an array
+its of Arguments Class
+use rest and arguments wisely, refer: fns.js file for this
+
+====================================================================================
+
+Note:
+-----
+
+ The arguments variable is "array-like", but not an array. 
+It is array-like in that it has a numbered index and a length property. 
+However, it does not possess all of the array-manipulation methods.
+====================================================================================
+
+task: try below 
+
+function myConcat(separator) {
+  let result = ""; // initialize list
+  // iterate through arguments
+  for (let i = 1; i < arguments.length; i++) {
+    result += arguments[i] + separator;
+  }
+  return result;
+}
+====================================================================================
+Parameters vs Aruments:
+-------------------------
+Note the difference between parameters and arguments:
+
+Function parameters are the names listed in the function's definition.
+Function arguments are the real values passed to the function.
+Parameters are initialized to the values of the arguments supplied.
+
+Function parameters
+===================
+There are two special kinds of parameter syntax: default parameters and rest parameters.
+
+Default parameters
+
+In JavaScript, parameters of functions default to undefined. 
+====================================================================================
+task:
+-----
+Number.parseInt()
+Number.parseFloat()
+Number.toFixed()
+Number.toExponential()
+====================================================================================
+pure/impure functions:
+----------------------
+
+	Pure Functions
+A pure function is a function which:
+
+Given the same input, will always return the same output.
+Produces no side effects.
+So, `console.log( double(5) );` is the same as `console.log(10);`
+
+This is true because `double()` is a pure function, but if `double()` had side-effects, such as saving the value to disk or logging to the console, you couldn’t simply replace `double(5)` with 10 without changing the meaning.
+
+
+<div id="content">
+	
+	<h1> </h1>
+</div>
+var element=document.getElementById('content');
+console.log(element);//<div id="content">	<h1> </h1></div>
+
+after 15 sec - u call a timeout(fn,15000)
+
+manipulates the dom
+
+<div id="content">
+	<input/>
+	<h1> </h1>
+</div>
+var element=document.getElementById('content');
+console.log(element);//<div id="content">	<input/> <h1> </h1></div>
+------------------------------------------------------------------------------
+This test itself is a checklist. A few examples of side-effects are
+
+Mutating your input
+console.log
+HTTP calls (AJAX/fetch)
+Changing the filesystem (fs)
+Querying the DOM
+
+refer below for side effects  and others in pure fns
+https://www.freecodecamp.org/news/what-is-a-pure-function-in-javascript-acb887375dfe/
+====================================================================================
+
+closure
+currying
+dom,bom,eventlisteners(loop)
+ajax
+date-fns,moment js
+Intl
