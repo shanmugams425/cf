@@ -1,71 +1,30 @@
-// bind in functions
-const module = {
-    x: 42,
-    getX: function () {
-        return this.x
 
-    }
+
+function makeAdder(x) {
+   console.log(x)
+    return function (y) {
+        console.log(x)    
+        console.log(y)    
+        return x + y;
+    };
 }
 
-const unboundGetX = module.getX.bind(module);
-console.log(unboundGetX())
+const add5 = makeAdder(5);
+const add10 = makeAdder(10);
 
+console.log(add5(2));
+console.log(add10(2));
 
-//p2:
+//
 
+var closure_F = (function () {
+    var info = "info-string";
+    var f1 = function () {
+        console.log(info);
+    };
 
-let user = {
-    firstName: "john"
-}
+    return f1;
+}());
 
-function bind1() {
-    return this.firstName
-}
-
-let funcUser1= bind1.bind(user)
-console.log(funcUser())
-// VM1570: 10 john
-
-
-//===========================================================
-//===========================================================
-
-
-//p3: 
-let user1 = {
-    firstName: "John"
-};
-
-function func(phrase) {
-    alert(phrase + ', ' + this.firstName);
-}
-
-// bind this to user
-let funcUser = func.bind(user1);
-
-funcUser("hello");
-
-
-//p4: 
-// bound to old user object even using setimeout
-let user3 = {
-    firstName: "John",
-    sayHi() {
-        alert(`Hello, ${this.firstName}!`);
-    }
-};
-
-let sayHi = user3.sayHi.bind(user3); // (*)
-
-// can run it without an object
-sayHi(); // Hello, John!
-
-setTimeout(sayHi, 1000); // Hello, John!
-
-// even if the value of user changes within 1 second
-// sayHi uses the pre-bound value which is reference to the old user object
-user = {
-    sayHi() { alert("Another user in setTimeout!"); }
-};
-
-
+closure_F();
+console.dir(closure_F);

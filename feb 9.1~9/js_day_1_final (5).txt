@@ -784,7 +784,7 @@ c1.fuelCapacity
 48
 
 
-Since objects inherit from the prototype object, then all new objects will have 
+ince objects inherit from the prototype object, then all new objects will have 
 changed property value if a prototype value is changed. 
 All the previously created objects will have the previous value.
 
@@ -1129,6 +1129,50 @@ Querying the DOM
 refer below for side effects  and others in pure fns
 https://www.freecodecamp.org/news/what-is-a-pure-function-in-javascript-acb887375dfe/
 ====================================================================================
+11:10 09-02-2023
+-----------------
+Nested functions:
+	class Employee{
+	id
+	name
+	sal
+	desc
+	desig
+	Address address;
+	}
+
+	class Address{
+		pin
+		state
+		country
+	}
+
+
+Employee e=new Employee();
+expose it in json from spring boot:
+{
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "address": {
+      "street": "Kulas Light",
+      "suite": "Apt. 556",
+      "city": "Gwenborough",
+      "zipcode": "92998-3874",
+      "geo": {
+        "lat": "-37.3159",
+        "lng": "81.1496"
+      }
+    },
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org",
+    "company": {
+      "name": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    }
+  } 
 
 closure
 currying
@@ -1136,4 +1180,12 @@ dom,bom,eventlisteners(loop)
 ajax
 date-fns,moment js
 Intl
+
+
+
+
+
+
+
+
 
